@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mounss Tv (DNI) - Consulta de DNI Perú</title>
+    <meta name="description"
+        content="Sistema de consulta de DNI para estudiantes de Vallegrande. Plan STUDENT disponible.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Login View -->
+    <div id="loginView" class="view active">
+        <div class="login-container">
+            <div class="login-card glass-card">
+                <div class="login-header">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="48" height="48" rx="12" fill="url(#gradient1)" />
+                                <path d="M24 12L32 20L24 28L16 20L24 12Z" fill="white" opacity="0.9" />
+                                <path d="M24 20L32 28L24 36L16 28L24 20Z" fill="white" opacity="0.6" />
+                                <defs>
+                                    <linearGradient id="gradient1" x1="0" y1="0" x2="48" y2="48">
+                                        <stop offset="0%" stop-color="#8B5CF6" />
+                                        <stop offset="100%" stop-color="#3B82F6" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h1 class="brand-title">Mounss Tv <span class="brand-subtitle">(DNI)</span></h1>
+                    </div>
+                    <p class="login-subtitle">Sistema de Consulta DNI - Perú</p>
+                    <div class="plan-badge">
+                        <span class="plan-icon">⭐</span>
+                        <span>Plan: STUDENT</span>
+                    </div>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Correo Institucional</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" placeholder="Tu correo institucional" required
+                                autocomplete="email">
+                            <span class="input-icon">📧</span>
+                        </div>
+                        <span class="input-hint">Solo correos @vallegrande.edu.pe</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="classCode">Código de Aula</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="classCode" placeholder="Código de aula" required maxlength="5"
+                                pattern="AS[0-9]{3}">
+                            <span class="input-icon">🔑</span>
+                        </div>
+                        <span class="input-hint">Formato: AS### (año ≥ 20)</span>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-text">Ingresar</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+
+                <div id="loginError" class="error-message hidden"></div>
+            </div>
+
+            <div class="login-info">
+                <div class="info-card glass-card">
+                    <h3>Acerca del Sistema</h3>
+                    <p>Plataforma de consulta de DNI integrada con múltiples proveedores de datos oficiales del Perú.
+                    </p>
+                    <ul class="features-list">
+                        <li>✓ 3 APIs de consulta disponibles</li>
+                        <li>✓ Datos actualizados de RENIEC</li>
+                        <li>✓ Acceso exclusivo para estudiantes</li>
+                        <li>✓ Interfaz moderna y segura</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="copyright-footer">
+            <p>© 2026/2027 Victor Cuaresma Salhuana. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboardView" class="view">
+        <div class="dashboard-container">
+            <!-- Sidebar -->
+            <aside class="sidebar glass-card">
+                <div class="sidebar-header">
+                    <div class="logo-small">
+                        <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="12" fill="url(#gradient2)" />
+                            <path d="M24 12L32 20L24 28L16 20L24 12Z" fill="white" opacity="0.9" />
+                            <path d="M24 20L32 28L24 36L16 28L24 20Z" fill="white" opacity="0.6" />
+                            <defs>
+                                <linearGradient id="gradient2" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#8B5CF6" />
+                                    <stop offset="100%" stop-color="#3B82F6" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="sidebar-brand">
+                        <h2>Mounss Tv</h2>
+                        <span class="sidebar-subtitle">(DNI)</span>
+                    </div>
+                </div>
+
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <span id="userInitial">U</span>
+                    </div>
+                    <div class="user-details">
+                        <p class="user-email" id="userEmail">user@vallegrande.edu.pe</p>
+                        <p class="user-code" id="userCode">AS231</p>
+                    </div>
+                </div>
+
+                <div class="plan-info">
+                    <div class="plan-header">
+                        <span class="plan-icon-large">⭐</span>
+                        <div>
+                            <p class="plan-label">Plan Actual</p>
+                            <p class="plan-name">STUDENT</p>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <p>✓ 3 APIs disponibles</p>
+                        <p>✓ Consultas ilimitadas</p>
+                    </div>
+                </div>
+
+                <button id="logoutBtn" class="btn-logout">
+                    <span>Cerrar Sesión</span>
+                    <span>🚪</span>
+                </button>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-header">
+                    <h1>Consulta de DNI</h1>
+                    <p class="content-subtitle">Selecciona una API y consulta información de DNI</p>
+                </div>
+
+                <!-- API Tabs -->
+                <div class="api-tabs">
+                    <button class="tab-btn active" data-api="v1">
+                        <span class="tab-number">V1</span>
+                        <span class="tab-name">Decolecta</span>
+                    </button>
+                    <button class="tab-btn" data-api="v2">
+                        <span class="tab-number">V2</span>
+                        <span class="tab-name">PeruDevs</span>
+                    </button>
+                    <button class="tab-btn" data-api="v3">
+                        <span class="tab-number">V3</span>
+                        <span class="tab-name">MiApi</span>
+                    </button>
+                </div>
+
+                <!-- Query Section -->
+                <div class="query-section glass-card">
+                    <form id="queryForm" class="query-form">
+                        <div class="form-group-inline">
+                            <div class="input-wrapper-large">
+                                <input type="text" id="dniInput" placeholder="Ingresa el número de DNI (8 dígitos)"
+                                    required pattern="[0-9]{8}" maxlength="8">
+                                <span class="input-icon">🔍</span>
+                            </div>
+                            <button type="submit" class="btn-search">
+                                <span>Consultar</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="apiIndicator" class="api-indicator">
+                        <span class="indicator-dot"></span>
+                        <span>API Seleccionada: <strong id="currentApi">Decolecta (V1)</strong></span>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="loading-state hidden">
+                    <div class="spinner"></div>
+                    <p>Consultando información...</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="errorState" class="error-state hidden glass-card">
+                    <div class="error-icon">⚠️</div>
+                    <h3>Error en la consulta</h3>
+                    <p id="errorMessage"></p>
+                </div>
+
+                <!-- Results Section -->
+                <div id="resultsSection" class="results-section hidden">
+                    <div class="result-card glass-card">
+                        <div class="result-header">
+                            <h2>Información del DNI</h2>
+                            <span class="result-badge">Encontrado</span>
+                        </div>
+
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <label>DNI</label>
+                                <p id="resultDni">-</p>
+                            </div>
+                            <div class="result-item">
+                                <label>Nombres</label>
+                                <p id="resultNombres">-</p>
+                            </div>
+                            <div class="result-item">
+                                <label>Apellido Paterno</label>
+                                <p id="resultPaterno">-</p>
+                            </div>
+                            <div class="result-item">
+                                <label>Apellido Materno</label>
+                                <p id="resultMaterno">-</p>
+                            </div>
+                            <div class="result-item full-width">
+                                <label>Nombre Completo</label>
+                                <p id="resultCompleto" class="highlight">-</p>
+                            </div>
+                            <div class="result-item" id="resultGeneroContainer">
+                                <label>Género</label>
+                                <p id="resultGenero">-</p>
+                            </div>
+                            <div class="result-item" id="resultFechaContainer">
+                                <label>Fecha de Nacimiento</label>
+                                <p id="resultFecha">-</p>
+                            </div>
+                            <div class="result-item" id="resultCodigoContainer">
+                                <label>Código de Verificación</label>
+                                <p id="resultCodigo">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer class="copyright-footer">
+            <p>© 2026/2027 Victor Cuaresma Salhuana. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
